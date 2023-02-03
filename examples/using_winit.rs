@@ -9,7 +9,9 @@ use game_loop::winit::window::{Window, WindowBuilder};
 
 fn main() {
     let event_loop = EventLoop::new();
-    let window = WindowBuilder::new().build(&event_loop).unwrap();
+    let window = std::sync::Arc::new(
+        WindowBuilder::new().build(&event_loop).unwrap()
+    );
 
     let game = Game::new();
 
